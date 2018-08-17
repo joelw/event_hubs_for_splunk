@@ -105,6 +105,7 @@
         }
 
         var eventHubMessageHandler = function(partition, msg) {
+            var offset = msg.annotations["x-opt-offset"];
             ResponseHandler.handleMessage(msg, dataInputName, eventWriter);
 
             if (!_.isUndefined(this._quiescenceTimer)) {
@@ -112,7 +113,7 @@
                 clearTimeout(this._quiescenceTimer);
                 this._quiescenceTimer = setTimeout(disconnectFunction, 5000);
             }
-            lastOffsets[partition] = msg.annotations["x-opt-offset"];
+            lastOffsets[partition] = offset;
         }
 
         // Open checkpoint file 
