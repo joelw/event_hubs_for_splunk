@@ -36,3 +36,5 @@ function is called once per Event Hub message.
     * (optional) `response_handler` (the name of a JavaScript file to filter event data through during ingestion)
 * Save your input, and navigate back to Splunk Home.
 
+To connect to an IoT Hub, find the endpoint through Azure Portal under IoT Hub -> Endpoints -> Events -> Event Hub-compatible
+endpoint. You will also need to append EntityPath= and the Event Hub-compatible name, which is found in the field above.
